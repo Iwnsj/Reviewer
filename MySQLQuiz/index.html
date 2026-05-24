@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MySQL Reviewer Quiz — 30 Items</title>
+    <meta name="description" content="Test your MySQL knowledge with 30 questions including query analysis and database concepts.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Ambient -->
+    <div class="ambient">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+        <div class="grid-overlay"></div>
+    </div>
+
+    <div class="app" id="app">
+
+        <!-- ===== START ===== -->
+        <section class="screen start-screen active" id="startScreen">
+            <div class="card start-card">
+                <div class="sql-logo">
+                    <span>SQL</span>
+                </div>
+                <h1 class="start-title">MySQL<br><span class="gradient-text">Reviewer Quiz</span></h1>
+                <p class="start-desc">30 questions covering queries, joins, aggregations, schema design, and code analysis. Predict outputs and test your database mastery.</p>
+
+                <div class="pill-row">
+                    <div class="pill"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/></svg>30 Items</div>
+                    <div class="pill"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>~15 min</div>
+                    <div class="pill"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>Query Analysis</div>
+                </div>
+
+                <button class="btn-start" id="btnStart">
+                    <span>Start Quiz</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
+
+                <div class="tag-cloud">
+                    <span>Basic Queries</span><span>Filtering & Sorting</span><span>Joins</span>
+                    <span>Aggregation</span><span>Schema Design</span><span>Constraints</span>
+                    <span>Subqueries</span><span>Transactions</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== QUIZ ===== -->
+        <section class="screen quiz-screen" id="quizScreen">
+            <header class="quiz-topbar">
+                <div class="topbar-left">
+                    <span class="q-num" id="qNum">1 / 30</span>
+                    <span class="q-cat-pill" id="qCatPill">Basic Queries</span>
+                </div>
+                <div class="topbar-right">
+                    <span class="score-badge" id="scoreBadge">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <span id="liveScore">0</span>
+                    </span>
+                </div>
+            </header>
+
+            <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+
+            <div class="quiz-card" id="quizCard">
+                <!-- Type indicator -->
+                <div class="q-type-row">
+                    <span class="q-type-badge" id="qTypeBadge">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><circle cx="12" cy="17" r=".5"/></svg>
+                        Concept
+                    </span>
+                    <span class="q-diff" id="qDiff">Medium</span>
+                </div>
+
+                <!-- Question -->
+                <h2 class="q-text" id="qText">Loading…</h2>
+
+                <!-- Code block -->
+                <div class="code-panel" id="codePanel" style="display:none">
+                    <div class="code-toolbar">
+                        <span class="code-lang">MySQL</span>
+                        <span class="code-label" id="codeLabel">Analyze this query</span>
+                    </div>
+                    <pre class="code-pre"><code id="codeContent"></code></pre>
+                </div>
+
+                <!-- Options -->
+                <div class="options" id="optionsContainer"></div>
+
+                <!-- Feedback -->
+                <div class="feedback" id="feedback" style="display:none">
+                    <div class="fb-stripe" id="fbStripe"></div>
+                    <div class="fb-body">
+                        <div class="fb-head">
+                            <span class="fb-icon" id="fbIcon"></span>
+                            <span class="fb-title" id="fbTitle">Correct!</span>
+                        </div>
+                        <p class="fb-explain" id="fbExplain"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quiz-bottom">
+                <button class="btn-next" id="btnNext" style="display:none">
+                    <span id="nextLabel">Next</span>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
+            </div>
+        </section>
+
+        <!-- ===== RESULTS ===== -->
+        <section class="screen results-screen" id="resultsScreen">
+            <div class="card results-card">
+                <!-- Score ring -->
+                <div class="ring-wrap">
+                    <svg class="ring-svg" viewBox="0 0 130 130">
+                        <circle cx="65" cy="65" r="56" stroke="rgba(255,255,255,0.05)" stroke-width="10" fill="none"/>
+                        <circle id="ringArc" cx="65" cy="65" r="56" stroke="url(#rGrad)" stroke-width="10" fill="none" stroke-linecap="round" stroke-dasharray="351.86" stroke-dashoffset="351.86" transform="rotate(-90 65 65)"/>
+                        <defs><linearGradient id="rGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#E48E00"/><stop offset="50%" stop-color="#00758F"/><stop offset="100%" stop-color="#4ade80"/></linearGradient></defs>
+                    </svg>
+                    <div class="ring-inner">
+                        <span class="ring-num" id="ringNum">0</span>
+                        <span class="ring-of">/ 30</span>
+                    </div>
+                </div>
+
+                <h2 class="res-title" id="resTitle">Quiz Complete!</h2>
+                <p class="res-sub" id="resSub">Here's your breakdown.</p>
+
+                <div class="stat-row">
+                    <div class="stat-box correct"><span class="stat-n" id="statCorrect">0</span><span class="stat-l">Correct</span></div>
+                    <div class="stat-box wrong"><span class="stat-n" id="statWrong">0</span><span class="stat-l">Wrong</span></div>
+                    <div class="stat-box pct"><span class="stat-n" id="statPct">0%</span><span class="stat-l">Score</span></div>
+                </div>
+
+                <!-- Category breakdown -->
+                <div class="cat-breakdown" id="catBreakdown"></div>
+
+                <!-- Review -->
+                <button class="btn-toggle-review" id="btnToggleReview">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                    Review All Answers
+                    <svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                </button>
+                <div class="review-list" id="reviewList" style="display:none"></div>
+
+                <button class="btn-start" id="btnRetry">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 105.64-12.36L1 10"/></svg>
+                    <span>Retake Quiz</span>
+                </button>
+            </div>
+        </section>
+    </div>
+
+    <script src="questions.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

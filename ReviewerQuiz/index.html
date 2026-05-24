@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML & CSS Reviewer Quiz</title>
+    <meta name="description" content="Test your HTML and CSS knowledge with this interactive 20-item reviewer quiz.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Ambient background blobs -->
+    <div class="ambient-bg">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <div class="app" id="app">
+
+        <!-- ========== START SCREEN ========== -->
+        <section class="screen start-screen active" id="startScreen">
+            <div class="start-card">
+                <div class="start-icon">
+                    <svg width="56" height="56" viewBox="0 0 24 24" fill="none">
+                        <path d="M4 17.5V6a2 2 0 012-2h8.5L19 8.5V18a2 2 0 01-2 2H6a2 2 0 01-2-2v-.5" stroke="url(#g1)" stroke-width="1.5" stroke-linecap="round"/>
+                        <path d="M13.5 4v5H19" stroke="url(#g1)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M8 12l2 2 4-4" stroke="url(#g2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <defs>
+                            <linearGradient id="g1" x1="4" y1="4" x2="19" y2="20"><stop stop-color="#818cf8"/><stop offset="1" stop-color="#38bdf8"/></linearGradient>
+                            <linearGradient id="g2" x1="8" y1="10" x2="14" y2="14"><stop stop-color="#4ade80"/><stop offset="1" stop-color="#22d3ee"/></linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                <h1 class="start-title">HTML & CSS<br><span>Reviewer Quiz</span></h1>
+                <p class="start-desc">Test your knowledge with 20 carefully crafted questions covering HTML elements, CSS properties, layout techniques, and best practices.</p>
+
+                <div class="start-stats">
+                    <div class="stat-pill">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/></svg>
+                        <span>20 Items</span>
+                    </div>
+                    <div class="stat-pill">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                        <span>~10 min</span>
+                    </div>
+                    <div class="stat-pill">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <span>Mixed Difficulty</span>
+                    </div>
+                </div>
+
+                <button class="btn-start" id="btnStart">
+                    <span>Start Quiz</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
+
+                <div class="start-topics">
+                    <span class="topic-tag">Semantic HTML</span>
+                    <span class="topic-tag">CSS Selectors</span>
+                    <span class="topic-tag">Flexbox</span>
+                    <span class="topic-tag">Box Model</span>
+                    <span class="topic-tag">Positioning</span>
+                    <span class="topic-tag">Forms</span>
+                    <span class="topic-tag">Responsive</span>
+                    <span class="topic-tag">Accessibility</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== QUIZ SCREEN ========== -->
+        <section class="screen quiz-screen" id="quizScreen">
+            <div class="quiz-header">
+                <div class="quiz-progress-info">
+                    <span class="q-counter" id="qCounter">Question 1 / 20</span>
+                    <span class="q-score" id="qScore">Score: 0</span>
+                </div>
+                <div class="progress-bar-track">
+                    <div class="progress-bar-fill" id="progressBar" style="width:5%"></div>
+                </div>
+            </div>
+
+            <div class="quiz-body">
+                <!-- Question badge -->
+                <div class="q-badge" id="qBadge">HTML</div>
+
+                <!-- Code snippet area (shown for code questions) -->
+                <div class="code-block" id="codeBlock" style="display:none">
+                    <pre><code id="codeSnippet"></code></pre>
+                </div>
+
+                <!-- Question text -->
+                <h2 class="q-text" id="qText">Loading question...</h2>
+
+                <!-- Options -->
+                <div class="options-grid" id="optionsGrid">
+                    <!-- dynamically populated -->
+                </div>
+
+                <!-- Feedback area -->
+                <div class="feedback" id="feedback" style="display:none">
+                    <div class="feedback-icon" id="feedbackIcon"></div>
+                    <div class="feedback-text">
+                        <p class="feedback-title" id="feedbackTitle"></p>
+                        <p class="feedback-explain" id="feedbackExplain"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quiz-footer">
+                <button class="btn-next" id="btnNext" style="display:none">
+                    <span id="btnNextLabel">Next Question</span>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
+            </div>
+        </section>
+
+        <!-- ========== RESULTS SCREEN ========== -->
+        <section class="screen results-screen" id="resultsScreen">
+            <div class="results-card">
+                <div class="results-ring-container">
+                    <svg class="results-ring" viewBox="0 0 120 120">
+                        <circle cx="60" cy="60" r="52" stroke="rgba(255,255,255,0.06)" stroke-width="10" fill="none"/>
+                        <circle class="ring-progress" id="ringProgress" cx="60" cy="60" r="52" stroke="url(#ringGrad)" stroke-width="10" fill="none"
+                            stroke-linecap="round" stroke-dasharray="326.73" stroke-dashoffset="326.73" transform="rotate(-90 60 60)"/>
+                        <defs>
+                            <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#818cf8"/>
+                                <stop offset="50%" stop-color="#38bdf8"/>
+                                <stop offset="100%" stop-color="#4ade80"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                    <div class="ring-label">
+                        <span class="ring-score" id="ringScore">0</span>
+                        <span class="ring-total">/ 20</span>
+                    </div>
+                </div>
+
+                <h2 class="results-title" id="resultsTitle">Quiz Complete!</h2>
+                <p class="results-subtitle" id="resultsSubtitle">Here's how you did.</p>
+
+                <div class="results-stats">
+                    <div class="r-stat correct">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+                        <div><span class="r-stat-num" id="rCorrect">0</span><span class="r-stat-label">Correct</span></div>
+                    </div>
+                    <div class="r-stat wrong">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M15 9l-6 6M9 9l6 6"/></svg>
+                        <div><span class="r-stat-num" id="rWrong">0</span><span class="r-stat-label">Wrong</span></div>
+                    </div>
+                    <div class="r-stat pct">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+                        <div><span class="r-stat-num" id="rPercent">0%</span><span class="r-stat-label">Score</span></div>
+                    </div>
+                </div>
+
+                <!-- Review Toggle -->
+                <button class="btn-review-toggle" id="btnReviewToggle">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                    <span>Review Answers</span>
+                    <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                </button>
+
+                <div class="review-section" id="reviewSection" style="display:none">
+                    <!-- populated by JS -->
+                </div>
+
+                <div class="results-actions">
+                    <button class="btn-start" id="btnRetry">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 105.64-12.36L1 10"/></svg>
+                        <span>Retake Quiz</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
