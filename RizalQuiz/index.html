@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jose Rizal's Novels Quiz Portal</title>
+    <meta name="description" content="Test your knowledge on Jose Rizal's revolutionary masterpieces: Noli Me Tangere and El Filibusterismo.">
+    <!-- Google Fonts: Playfair Display for elegant headers, Outfit for clean body text -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Ambient glowing backgrounds representing the two books -->
+    <div class="ambient-bg">
+        <div class="blob blob-noli"></div>
+        <div class="blob blob-fili"></div>
+    </div>
+
+    <div class="portal-container">
+        <header class="portal-header">
+            <span class="portal-tag">📜 Literary Reviewer</span>
+            <h1>Rizal's Masterpieces</h1>
+            <p>Step into 19th-century Philippines and test your mastery of the narratives, symbolisms, and characters that sparked a revolution.</p>
+        </header>
+
+        <div class="selection-grid">
+            <!-- Noli Me Tangere Card -->
+            <a href="quiz.html?novel=noli" class="novel-card noli">
+                <div class="novel-badge">Book I • 1887</div>
+                <div class="novel-icon">🌸</div>
+                <div class="novel-content">
+                    <h2>Noli Me Tangere</h2>
+                    <p class="novel-translation">"Touch Me Not"</p>
+                    <p class="novel-desc">A romantic yet satirical exposure of the deep-seated social cancer under Spanish clergy rule. Follow Crisostomo Ibarra's peaceful crusade for education, Sisa's tragic despair, and Elias's quiet sacrifice.</p>
+                    <div class="novel-meta">
+                        <span class="meta-pill">50 Items</span>
+                        <span class="meta-pill">Hope & Satire</span>
+                        <span class="meta-pill">San Diego</span>
+                    </div>
+                    <div class="novel-action-btn">
+                        <span>Begin Novel Quiz</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </div>
+                </div>
+            </a>
+
+            <!-- El Filibusterismo Card -->
+            <a href="quiz.html?novel=fili" class="novel-card fili">
+                <div class="novel-badge">Book II • 1891</div>
+                <div class="novel-icon">💎</div>
+                <div class="novel-content">
+                    <h2>El Filibusterismo</h2>
+                    <p class="novel-translation">"The Reign of Greed"</p>
+                    <p class="novel-desc">A dark, explosive thriller of revolution, revenge, and moral choices. Follow the cynical jeweler Simoun as he pulls political strings, Basilio's trials, Juli's tragic sacrifice, and the revolutionary warning lamp.</p>
+                    <div class="novel-meta">
+                        <span class="meta-pill">50 Items</span>
+                        <span class="meta-pill">Revenge & Fire</span>
+                        <span class="meta-pill">Bapor Tabo</span>
+                    </div>
+                    <div class="novel-action-btn">
+                        <span>Begin Novel Quiz</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <footer class="portal-footer">
+            <a href="../index.html" class="btn-back">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                <span>Back to Quiz Portal</span>
+            </a>
+        </footer>
+    </div>
+</body>
+</html>

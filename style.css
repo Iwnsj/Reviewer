@@ -11,6 +11,7 @@
     --c-mysql: #00758f;
     --c-htmlcss: #e34f26;
     --c-micro: #4ade80;
+    --c-rizal: #f59e0b;
 }
 
 * {
@@ -139,6 +140,7 @@ header p {
 .card.mysql::before { background: var(--c-mysql); }
 .card.htmlcss::before { background: var(--c-htmlcss); }
 .card.micro::before { background: var(--c-micro); }
+.card.rizal::before { background: var(--c-rizal); }
 
 .card:hover {
     transform: translateY(-10px);
