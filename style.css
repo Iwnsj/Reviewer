@@ -12,6 +12,7 @@
     --c-htmlcss: #e34f26;
     --c-micro: #4ade80;
     --c-rizal: #f59e0b;
+    --c-networks: #06b6d4;
 }
 
 * {
@@ -141,6 +142,7 @@ header p {
 .card.htmlcss::before { background: var(--c-htmlcss); }
 .card.micro::before { background: var(--c-micro); }
 .card.rizal::before { background: var(--c-rizal); }
+.card.networks::before { background: var(--c-networks); }
 
 .card:hover {
     transform: translateY(-10px);
